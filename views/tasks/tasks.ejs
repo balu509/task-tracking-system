@@ -1,0 +1,45 @@
+<%- include('../layout') %>
+
+<h2>Your Tasks</h2>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Due Date</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+    <% tasks.forEach(task => { %>
+        <tr>
+            <td><%= task.title %></td>
+            <td><%= task.description %></td>
+            <td><%= task.dueDate ? task.dueDate.toLocaleDateString() : 'N/A' %></td>
+            <td><%= task.status %></td>
+            <td>
+                <% if (task.status === 'open') { %>
+                    <form action="/tasks/complete/<%= task._id %>" method="POST" style="display:inline;">
+                        <button type="submit">Complete</button>
+                    </form>
+                <% } %>
+                <a href="/tasks/edit/<%= task._id %>">Edit</a>
+                <form action="/tasks/delete/<%= task._id %>" method="POST" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+    <% }) %>
+</table>
+
+<h3>Create New Task</h3>
+<form action="/tasks" method="POST">
+    <label for="title">Task Title:</label>
+    <input type="text" id="title" name="title" required />
+    
+    <label for="description">Description:</label>
+    <textarea id="description" name="description"></textarea>
+    
+    <label for="dueDate">Due Date:</label>
+    <input type="date" id="dueDate" name="dueDate" />
+    
+    <button type="submit">Create Task</button>
+</form>

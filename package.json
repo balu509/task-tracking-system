@@ -4,13 +4,17 @@
   "description": "Task Tracking and Management Application\r Brief\r This project is a backend system designed for a task tracking and management application that facilitates collaboration and organization within teams or projects. The application allows users to create, assign, and track tasks, collaborate with team members via comments and attachments, and manage teams or projects.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.3",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
     "express": "^4.21.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.7.1",
